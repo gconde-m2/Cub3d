@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bmp.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/01 13:31:48 by gconde-m          #+#    #+#             */
+/*   Updated: 2020/06/01 13:32:23 by gconde-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
-static void	header(int fd, int file_size)
+
+static void		header(int fd, int file_size)
 {
 	int aux;
 
@@ -11,7 +24,7 @@ static void	header(int fd, int file_size)
 	write(fd, &aux, 4);
 }
 
-static void	cabecera(t_struct *x, int fd)
+static void		cabecera(t_struct *x, int fd)
 {
 	int file_size;
 	int aux;
@@ -37,18 +50,18 @@ static void	cabecera(t_struct *x, int fd)
 	write(fd, &aux, 8);
 }
 
-void	makebmp(t_struct *x)
+void			makebmp(t_struct *x)
 {
-int fd;
-	int h;
-	int w;
-	int aux;
+	int		fd;
+	int		h;
+	int		w;
+	int		aux;
 
 	if ((fd = open("Cube3d.bmp", O_CREAT | O_WRONLY | O_TRUNC, 0644)) < 0)
 		ft_exitinerror(x);
 	else
 	{
-		cabecera(x,fd);
+		cabecera(x, fd);
 		h = -1;
 		while (++h < x->h)
 		{

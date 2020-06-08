@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sprite2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 06:46:00 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/03/03 08:18:10 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/06/01 11:14:16 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	set_start_end(t_struct *x)
 void	calculate_distances(t_struct *x)
 {
 	int i;
+
 	i = 0;
 	while (i < x->num)
 	{
@@ -85,11 +86,11 @@ void	calculate_distances(t_struct *x)
 
 void	sprites_casting(t_struct *x)
 {
-	(void)x;
 	int i;
 	int k;
 	int stripe;
 
+	(void)x;
 	calculate_distances(x);
 	i = -1;
 	while (++i < x->num)
@@ -109,5 +110,4 @@ void	sprites_casting(t_struct *x)
 		while (++stripe < x->draw_end_x)
 			draw_sprite(x, stripe);
 	}
-	
 }

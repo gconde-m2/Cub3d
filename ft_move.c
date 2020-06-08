@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 08:44:38 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/03/03 07:56:19 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/06/01 13:21:43 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	key_pressed(int key, t_struct *x)
+int		key_pressed(int key, t_struct *x)
 {
 	if (key == 13)
 		x->kw = 1;
@@ -31,7 +31,7 @@ int	key_pressed(int key, t_struct *x)
 	return (0);
 }
 
-int	key_released(int key, t_struct *x)
+int		key_released(int key, t_struct *x)
 {
 	if (key == 13)
 		x->kw = 0;
@@ -80,7 +80,7 @@ void	rotate(t_struct *x)
 	}
 }
 
-int	move_draw(t_struct *x)
+int		move_draw(t_struct *x)
 {
 	x->rotspeed = x->speed / 2.2;
 	move_up_down(x);

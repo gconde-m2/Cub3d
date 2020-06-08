@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 08:25:28 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/03/06 11:27:03 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/06/01 11:01:06 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ void    ft_cellcalc(t_struct *x);
 void    ft_floorcalc(t_struct *x);
 void 	ft_texturesup(t_struct *x);
 void    ft_befdraw(t_struct *x);
-int		sprites_init(t_struct *x);
+void	sprites_init(t_struct *x);
 void	get_x_y(t_struct *x);
 int		get_index(t_struct *x);
 void	sprites_casting(t_struct *x);
@@ -220,5 +220,6 @@ void	check_floor_color(t_struct *x, char *line);
 void	readtextures_2(t_struct *x, char *line, int h, int w);
 void	ft_texturehelpingread(t_struct *x, char *line, int i);
 void	makebmp(t_struct *x);
+int		cleaning_sprites(t_struct *x);
 #endif
 

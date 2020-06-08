@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wall.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 06:49:00 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/03/06 07:02:37 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/06/01 10:55:36 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,12 @@ void	ft_color(t_struct *x)
 void	ft_draw(t_struct *x)
 {
 	while (x->n < x->drawstart)
-    {
-		x->color = (x->cealing_red * 256 * 256) + (x->cealing_green * 256) 
+	{
+		x->color = (x->cealing_red * 256 * 256) + (x->cealing_green * 256)
 												+ x->cealing_blue;
-        *(x->dataI + (x->n * x->w)) = x->color;
-        x->n++;
-    }
+		*(x->dataI + (x->n * x->w)) = x->color;
+		x->n++;
+	}
 	while (x->n <= x->drawend)
 	{
 		x->texty = (int)x->texpos & (x->texheight - 1);
@@ -124,11 +124,11 @@ void	ft_draw(t_struct *x)
 		*(x->dataI + (x->n * x->w)) = x->color;
 		x->n++;
 	}
-	while ( x->n < x->h)
-    {
-		x->color = (x->floor_red * 256 * 256) + (x->floor_green * 256) 
+	while (x->n < x->h)
+	{
+		x->color = (x->floor_red * 256 * 256) + (x->floor_green * 256)
 												+ x->floor_blue;
-        *(x->dataI + (x->n * x->w)) = x->color;
-        x->n++;
-    }
+		*(x->dataI + (x->n * x->w)) = x->color;
+		x->n++;
+	}
 }

@@ -1,0 +1,20 @@
+R 1280 800
+NO ./src/wall2.xpm
+SO ./src/pared1.xpm
+WE ./src/pared2.xpm
+EA ./src/pared3.xpm
+
+S ./src/cow.xpm
+F 33,33,33
+C 242,243,244
+
+          
+    1111  
+   100001 
+  100001  
+  1010S11 
+   1120001
+     1111 
+          
+          
+          

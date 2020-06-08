@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/15 09:31:09 by gconde-m          #+#    #+#              #
-#    Updated: 2020/03/06 11:30:42 by gconde-m         ###   ########.fr        #
+#    Updated: 2020/06/03 06:56:31 by gconde-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c  ft_split.c  \
 ft_strchr.c ft_strdup.c ft_strjoin.c ft_strlcat.c  \
 ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c  \
 ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
-ft_tolower.c ft_toupper.c ft_printf.c
+ft_tolower.c ft_toupper.c ft_printf.c ft_readinglast.c
 SRCGNL = get_next_line.c getnextline/get_next_line_utils.c
-SRCCUB = cub3d.c ft_zero.c ft_move.c ft_sprites.c ft_floor.c ft_wall.c ft_sprite2.c ft_reading.c ft_errorsexit.c ft_reading2.c bmp.c
+SRCCUB = cub3d.c ft_zero.c ft_move.c ft_sprites.c ft_floor.c ft_wall.c ft_sprite2.c ft_reading.c ft_errorsexit.c ft_reading2.c bmp.c ft_readinglast.c
 CC = gcc -Wall -Wextra -Werror
 RM = rm -f
 all: $(NAME)

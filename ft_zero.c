@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_zero.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 06:33:07 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/03/03 06:36:07 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/06/01 10:50:51 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,4 @@ void	ft_tozero(t_struct *x)
 	x->floor_green = -1;
 	x->floor_blue = -1;
 	x->map_str = ft_strdup("");
-}	
+}

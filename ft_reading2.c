@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reading2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 08:12:14 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/03/06 08:59:30 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/06/01 11:19:13 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	check_cealing_color(t_struct *x, char *line)
 	else
 		ft_exitinerror(x);
 }
+
 void	ft_readreserror(t_struct *x, char *line)
 {
 	(void)line;
@@ -80,9 +81,8 @@ void	ft_readreserror(t_struct *x, char *line)
 			x->w = 2560;
 		else if (x->h > 1440)
 			x->h = 1440;
-		else if ( x->h < 200)
+		else if (x->h < 200)
 			x->h = 200;
-		
 	}
 }
 
@@ -113,15 +113,15 @@ void	ft_readres(t_struct *x, char *line)
 
 void	ft_texturehelpingread(t_struct *x, char *line, int i)
 {
-	int h ;
+	int h;
 	int w;
+
 	line = line + 2;
-		while (*line == ' ')
-			++line;
-		x->texture_ptr = mlx_xpm_file_to_image(x->mlx_ptr, line, &h, &w);
-		x->texture[i] = (int*)mlx_get_data_addr(x->texture_ptr,
-						&x->bits, &x->size_line, &x->endian);
+	while (*line == ' ')
+		++line;
+	x->texture_ptr = mlx_xpm_file_to_image(x->mlx_ptr, line, &h, &w);
+	x->texture[i] = (int*)mlx_get_data_addr(x->texture_ptr,
+					&x->bits, &x->size_line, &x->endian);
 	if (open(line, O_RDONLY) < 0)
 		ft_exitinerror(x);
-	
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sprites.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 06:44:06 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/02/25 07:13:57 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/06/01 11:03:53 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	get_x_y(t_struct *x)
 	}
 }
 
-int		sprites_init(t_struct *x)
+void	sprites_init(t_struct *x)
 {
 	if (x->dir == 'N')
 	{
@@ -85,6 +85,11 @@ int		sprites_init(t_struct *x)
 		x->diry = -1;
 		x->planex = -0.66;
 	}
+	cleaning_sprites(x);
+}
+
+int		cleaning_sprites(t_struct *x)
+{
 	if (!(x->used = (int*)malloc(sizeof(int) * x->num)))
 		return (0);
 	if (!(x->distance = (double*)malloc(sizeof(double) *
