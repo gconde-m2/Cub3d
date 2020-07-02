@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readinglast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 06:48:50 by gconde-m          #+#    #+#             */
 /*   Updated: 2020/06/03 07:17:36 by gconde-m         ###   ########.fr       */
@@ -14,104 +14,93 @@
 
 static void	check_and_set_values(t_struct *x, int i, int j)
 {
-	if (*x->map_str == 'N' || *x->map_str == 'S' ||
-								*x->map_str == 'E' || *x->map_str == 'W')
+	if ((*x->map_str < '0' || *x->map_str > '2') &&
+	(*x->map_str != 'N' && *x->map_str != 'S' &&
+	*x->map_str != 'E' && *x->map_str != 'W' && *x->map_str != ' ' &&
+	*x->map_str != '\n'))
+		ft_exitinerror(x);
+	if (*x->map_str == '2')
+		x->num++;
+	else
 	{
-		if (x->posy == 0)
+		if (ft_isalpha(*x->map_str))
 		{
+			if (x->posx != 0)
+				ft_exitinerror(x);
 			x->posx = i + 0.5;
 			x->posy = j + 0.5;
 			x->dir = *x->map_str;
+			*x->map_str = '0';
 		}
-		else
-			ft_exitinerror(x);
+		if (*x->map_str == ' ')
+			*x->map_str = '3';
 	}
-	else
-	{
-		if (*x->map_str == '0' || *x->map_str == '1' || *x->map_str == ' '
-														|| *x->map_str == '2')
-			x->worldMap[i][j] = *x->map_str - '0';
-		else
-			ft_exitinerror(x);
-	}
-	if (x->worldMap[i][j] == 2)
-		x->num++;
-	x->map_str++;
 }
 
 static void	check_and_set_map(t_struct *x)
 {
 	int i;
-	int j;
 
-	if (!(x->worldMap = (int**)ft_calloc(x->map_height, sizeof(int*))))
+	i = 0;
+	if (!(x->worldmap = malloc(sizeof(int*) * x->map_height)))
 		ft_exitinerror(x);
-	i = -1;
-	while (++i < x->map_height)
+	ft_bzero(x->worldmap, sizeof(int*));
+	while (i < x->map_height)
 	{
-		if (!(x->worldMap[i] = (int*)ft_calloc(x->map_width, sizeof(int))))
+		if (!(x->worldmap[i] = malloc(sizeof(int) * x->map_width)))
 			ft_exitinerror(x);
-		j = -1;
-		while (++j < x->map_width)
-		{
-			if (*x->map_str == '\n')
-			{
-				while (j < x->map_width)
-					x->worldMap[i][j++] = -1;
-				x->map_str++;
-				break ;
-			}
-			check_and_set_values(x, i, j);
-		}
-		if (*x->map_str == '\n')
-			x->map_str++;
+		i++;
 	}
 }
 
 void		ft_check_map(t_struct *x)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	(void)x;
-	j = 0;
 	i = 0;
+	x->map_str_pos = x->map_str;
 	while (i < x->map_height)
 	{
 		j = 0;
 		while (j < x->map_width)
 		{
-			if (x->worldMap[i][j] < 0 && ((i != 0 &&
-x->worldMap[i - 1][j] == 0) || (j != 0 && (x->worldMap[i][j - 1] == 0))))
-				ft_exitinerror(x);
-			if (x->worldMap[i][j] < 0 && ((i != 0 &&
-x->worldMap[i - 1][j] == 2) || (j != 0 && (x->worldMap[i][j - 1] == 2))))
-				ft_exitinerror(x);
-			if ((x->worldMap[i][j] == 0 || x->worldMap[i][j] == 2) &&
-			(i == 0 || j == 0 || i == x->map_height || j == x->map_width ||
-				x->worldMap[i - 1][j] < 0 || x->worldMap[i][j - 1] < 0))
-				ft_exitinerror(x);
+			check_and_set_values(x, i, j);
+			if (*x->map_str == '\n')
+				x->worldmap[i][j] = 3;
+			else
+				x->worldmap[i][j] = *x->map_str - '0';
+			if (*x->map_str != '\n')
+				x->map_str++;
 			j++;
 		}
-		++i;
+		x->map_str++;
+		i++;
 	}
+	ft_validate_map(x);
 }
 
-void		ft_check(t_struct *x, char *line)
+int			ft_validate_map_2(t_struct *x, int row, int col)
 {
-	if (*line == 'R')
-		ft_readres(x, line);
-	else if (*line == 'S' || *line == 'N' || *line == 'W' || *line == 'E')
-		ft_readtextures(x, line);
-	else if (*line == 'F')
-		check_floor_color(x, line);
-	else if (*line == 'C')
-		check_cealing_color(x, line);
-	else if (ft_isdigit(*line) || *line == ' ')
-		ft_read_map(x, line);
-	else if (*line != '\0')
-		ft_exitinerror(x);
-	free(line);
+	char	c;
+	int		ok;
+
+	if (row < 0 || col < 0 || row >= x->map_height || col >= x->map_width)
+		return (1);
+	c = x->worldmap[row][col];
+	if (c == 3)
+		return (1);
+	else if (c == 4 || c == 1 || c == 5)
+		return (0);
+	if (x->worldmap[row][col] == 0)
+		x->worldmap[row][col] = 4;
+	else
+		x->worldmap[row][col] = 5;
+	ok = ft_validate_map_2(x, row, col - 1);
+	ok = ok == 0 ? ft_validate_map_2(x, row, col + 1) : ok;
+	ok = ok == 0 ? ft_validate_map_2(x, row - 1, col) : ok;
+	ok = ok == 0 ? ft_validate_map_2(x, row + 1, col) : ok;
+	return (ok);
 }
 
 void		reading_all(t_struct *x, char *s1)
@@ -124,18 +113,13 @@ void		reading_all(t_struct *x, char *s1)
 	while ((x->zread = get_next_line(fd, &line)) >= 0)
 	{
 		ft_check(x, line);
+		free(line);
 		if (x->zread == 0)
 		{
-			while (x->texture[x->zread] && x->zread < 4)
-				x->zread++;
-			if (x->zread != 4)
-				ft_exitinerror(x);
 			if (x->map_height < 3 || x->map_width < 3)
 				ft_exitinerror(x);
 			check_and_set_map(x);
 			ft_check_map(x);
-			if (x->posx == 0)
-				ft_exitinerror(x);
 			break ;
 		}
 	}

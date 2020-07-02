@@ -18,11 +18,11 @@ void	ft_floorcalc(t_struct *x)
 	x->raydiry0 = x->diry - x->planey;
 	x->raydirx1 = x->dirx + x->planex;
 	x->raydiry1 = x->diry + x->planey;
-	x->p = x->y - screenHeight / 2;
-	x->posz = 0.5 * screenHeight;
+	x->p = x->y - x->h / 2;
+	x->posz = 0.5 * x->h;
 	x->rowdistance = x->posz / x->p;
-	x->floorstepx = x->rowdistance * (x->raydirx1 - x->raydirx0) / screenWidth;
-	x->floorstepy = x->rowdistance * (x->raydiry1 - x->raydiry0) / screenWidth;
+	x->floorstepx = x->rowdistance * (x->raydirx1 - x->raydirx0) / x->w;
+	x->floorstepy = x->rowdistance * (x->raydiry1 - x->raydiry0) / x->w;
 	x->floorx = x->posx + x->rowdistance * x->raydirx0;
 	x->floory = x->posy + x->rowdistance * x->raydiry0;
 }
@@ -43,20 +43,20 @@ void	ft_cellcalc(t_struct *x)
 
 void	ft_floorcasting(t_struct *x)
 {
-	x->y = screenHeight / 2 + 1;
-	while (x->y < screenHeight)
+	x->y = x->h / 2 + 1;
+	while (x->y < x->h)
 	{
 		ft_floorcalc(x);
 		x->z = 0;
-		while (x->z < screenWidth)
+		while (x->z < x->w)
 		{
 			ft_cellcalc(x);
 			x->color = x->texture[x->floortexture][x->texwidth * x->ty + x->tx];
-			*(x->dataI + (x->y * screenWidth) + x->z) = x->color;
+			*(x->datai + (x->y * x->w) + x->z) = x->color;
 			x->color = x->texture[x->ceilingtexture]
 						[x->texwidth * x->ty + x->tx];
-			*(x->dataI + ((screenHeight - x->y - 1) *
-						screenWidth) + x->z) = x->color;
+			*(x->datai + ((x->h - x->y - 1) *
+						x->w) + x->z) = x->color;
 			x->z++;
 		}
 		x->y++;

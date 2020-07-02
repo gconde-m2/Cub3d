@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 08:44:38 by gconde-m          #+#    #+#             */
 /*   Updated: 2020/06/01 13:21:43 by gconde-m         ###   ########.fr       */
@@ -14,36 +14,36 @@
 
 int		key_pressed(int key, t_struct *x)
 {
-	if (key == 13)
+	if (key == K_UP)
 		x->kw = 1;
-	if (key == 123)
+	if (key == K_LEFT)
 		x->karrowright = 1;
-	if (key == 1)
+	if (key == K_DOWN)
 		x->ks = 1;
-	if (key == 124)
+	if (key == K_RIGHT)
 		x->karrowleft = 1;
-	if (key == 0)
+	if (key == K_LEFTS)
 		x->ka = 1;
-	if (key == 2)
+	if (key == K_RIGHTS)
 		x->kd = 1;
-	if (key == 53)
+	if (key == K_ESC)
 		cubexit(x);
 	return (0);
 }
 
 int		key_released(int key, t_struct *x)
 {
-	if (key == 13)
+	if (key == K_UP)
 		x->kw = 0;
-	if (key == 123)
+	if (key == K_LEFT)
 		x->karrowright = 0;
-	if (key == 1)
+	if (key == K_DOWN)
 		x->ks = 0;
-	if (key == 124)
+	if (key == K_RIGHT)
 		x->karrowleft = 0;
-	if (key == 0)
+	if (key == K_LEFTS)
 		x->ka = 0;
-	if (key == 2)
+	if (key == K_RIGHTS)
 		x->kd = 0;
 	return (0);
 }
@@ -56,9 +56,9 @@ void	move_up_down(t_struct *x)
 			x->speed *= -1;
 		if (x->kw == 1 && x->speed < 0)
 			x->speed *= -1;
-		if (x->worldMap[(int)(x->posx + x->dirx * x->speed)][(int)x->posy] == 0)
+		if (x->worldmap[(int)(x->posx + x->dirx * x->speed)][(int)x->posy] == 0)
 			x->posx += x->dirx * x->speed;
-		if (x->worldMap[(int)x->posx][(int)(x->posy + x->diry * x->speed)] == 0)
+		if (x->worldmap[(int)x->posx][(int)(x->posy + x->diry * x->speed)] == 0)
 			x->posy += x->diry * x->speed;
 	}
 }
@@ -71,10 +71,10 @@ void	rotate(t_struct *x)
 			x->rotspeed *= -1;
 		if (x->kd == 1 && x->speed < 0)
 			x->rotspeed *= -1;
-		if (x->worldMap[(int)(x->posx + x->planex *
+		if (x->worldmap[(int)(x->posx + x->planex *
 							x->rotspeed)][(int)(x->posy)] == 0)
 			x->posx += x->planex * x->rotspeed;
-		if (x->worldMap[(int)(x->posx)][(int)(x->posy +
+		if (x->worldmap[(int)(x->posx)][(int)(x->posy +
 										x->planey * x->rotspeed)] == 0)
 			x->posy += x->planey * x->rotspeed;
 	}

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sprite2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 06:46:00 by gconde-m          #+#    #+#             */
 /*   Updated: 2020/06/01 11:14:16 by gconde-m         ###   ########.fr       */
@@ -32,7 +32,7 @@ void	draw_sprite(t_struct *x, int stripe)
 			color = x->texture[SPRITE_TEXT][TEXTURE_WIDTH *
 				x->texture_y + x->texture_x];
 			if (color != x->texture[SPRITE_TEXT][0])
-				*(x->dataI + (y * x->w) + stripe) = color;
+				*(x->datai + (y * x->w) + stripe) = color;
 			++y;
 		}
 	}

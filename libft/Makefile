@@ -55,7 +55,7 @@ SRCS=	ft_memset.c \
 		ft_split.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
-		ft_printf.c
+		getnextline.c
 
 DINCLUDE	= includes
 
@@ -67,7 +67,7 @@ NAME		= libft.a
 
 CC 			= gcc
 
-CFLAGS		 = -Wall -Wextra -Werror -I. -c
+CFLAGS		 =  -I. -c
 
 RM			 = rm -f
 

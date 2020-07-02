@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wall.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 06:49:00 by gconde-m          #+#    #+#             */
 /*   Updated: 2020/06/01 10:55:36 by gconde-m         ###   ########.fr       */
@@ -52,7 +52,7 @@ void	ft_calculotwo(t_struct *x)
 			x->mapy += x->stepy;
 			x->side = 1;
 		}
-		if (x->worldMap[x->mapx][x->mapy] == 1)
+		if (x->worldmap[x->mapx][x->mapy] == 1)
 			x->hit = 1;
 	}
 	if (x->side == 0)
@@ -77,7 +77,7 @@ void	ft_befdraw(t_struct *x)
 		x->textx = x->texwidth - x->textx - 1;
 	x->step = 1.0 * x->texheight / x->lineheight;
 	x->texpos = (x->drawstart - x->h / 2 + x->lineheight / 2) * x->step;
-	if (x->worldMap[x->mapx][x->mapy] == 1)
+	if (x->worldmap[x->mapx][x->mapy] == 1)
 		x->color = *x->texture[x->texnum];
 }
 
@@ -113,7 +113,7 @@ void	ft_draw(t_struct *x)
 	{
 		x->color = (x->cealing_red * 256 * 256) + (x->cealing_green * 256)
 												+ x->cealing_blue;
-		*(x->dataI + (x->n * x->w)) = x->color;
+		*(x->datai + (x->n * x->w)) = x->color;
 		x->n++;
 	}
 	while (x->n <= x->drawend)
@@ -121,14 +121,14 @@ void	ft_draw(t_struct *x)
 		x->texty = (int)x->texpos & (x->texheight - 1);
 		x->texpos += x->step;
 		x->color = x->texture[x->texnum][x->texheight * x->texty + x->textx];
-		*(x->dataI + (x->n * x->w)) = x->color;
+		*(x->datai + (x->n * x->w)) = x->color;
 		x->n++;
 	}
 	while (x->n < x->h)
 	{
 		x->color = (x->floor_red * 256 * 256) + (x->floor_green * 256)
 												+ x->floor_blue;
-		*(x->dataI + (x->n * x->w)) = x->color;
+		*(x->datai + (x->n * x->w)) = x->color;
 		x->n++;
 	}
 }

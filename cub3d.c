@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 08:47:59 by gconde-m          #+#    #+#             */
-/*   Updated: 2020/06/01 13:29:41 by gconde-m         ###   ########.fr       */
+/*   Updated: 2020/07/02 11:04:18 by gconde-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_calculo(t_struct *x)
 {
-	x->dataI = x->data;
+	x->datai = x->data;
 	x->x = 0;
 	x->i = 0;
 	while (x->x < x->w)
@@ -33,7 +33,7 @@ void	ft_calculo(t_struct *x)
 		ft_draw(x);
 		x->z_buffer[x->x] = x->perpwalldist;
 		x->x++;
-		x->dataI++;
+		x->datai++;
 		x->n = 0;
 	}
 	sprites_casting(x);

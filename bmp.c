@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   bmp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 13:31:48 by gconde-m          #+#    #+#             */
 /*   Updated: 2020/06/01 13:32:23 by gconde-m         ###   ########.fr       */
@@ -68,7 +68,7 @@ void			makebmp(t_struct *x)
 			w = -1;
 			while (++w < x->w)
 			{
-				aux = *(x->dataI + (h * x->w + w));
+				aux = *(x->datai + (x->w * (x->h - 1 - h) + w));
 				write(fd, &aux, 4);
 			}
 		}

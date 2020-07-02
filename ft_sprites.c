@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sprites.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gconde-m <gconde-m@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: gconde-m <gconde-m@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 06:44:06 by gconde-m          #+#    #+#             */
 /*   Updated: 2020/06/01 11:03:53 by gconde-m         ###   ########.fr       */
@@ -51,7 +51,7 @@ void	get_x_y(t_struct *x)
 		y = 0;
 		while (y < x->map_width)
 		{
-			if (x->worldMap[z][y] == 2)
+			if (x->worldmap[z][y] == 2)
 			{
 				x->spritex[i] = z + 0.6;
 				x->spritey[i] = y + 0.6;
